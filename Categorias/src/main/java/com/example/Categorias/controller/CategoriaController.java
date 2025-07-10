@@ -74,17 +74,7 @@ public class CategoriaController {
         summary = "Crear una nueva categoría",
         description = "Crea una categoría nueva en base al cuerpo enviado en la solicitud."
     )
-    @RequestBody(
-        description = "Datos de la nueva categoría a registrar",
-        required = true,
-        content = @Content(
-            schema = @Schema(implementation = Categoria.class),
-            examples = @ExampleObject(
-                name = "Ejemplo de categoría",
-                value = "{\"nombre\": \"Tecnología\", \"descripcion\": \"Productos tecnológicos y electrónicos\"}"
-            )
-        )
-    )
+  
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Categoría creada exitosamente",
             content = @Content(schema = @Schema(implementation = Categoria.class))),
