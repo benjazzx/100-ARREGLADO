@@ -82,15 +82,13 @@ public class RespuestaController {
         ),
         @ApiResponse(responseCode = "400", description = "Error al crear la respuesta")
     })
-    @PostMapping
-    public ResponseEntity<Respuesta> createRespuesta(@RequestBody Respuesta nuevoRespuesta) {
-        try {
-            Respuesta respuestaGuardado = respuestaService.saveSoporte(nuevoRespuesta);
-            return ResponseEntity.ok(respuestaGuardado);
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(null);
-        }
+      @PostMapping
+public ResponseEntity<String> createRespuesta(@RequestBody Respuesta nuevoRespuesta) {
+    if (nuevoRespuesta == null) {
+        return ResponseEntity.badRequest().body("No se recibió un objeto válido");
     }
+    return ResponseEntity.ok("Contenido: " + nuevoRespuesta.getContenido() + ", soporteId: " + nuevoRespuesta.getSoporteId());
+}
     
     
     @Operation(
